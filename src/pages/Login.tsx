@@ -81,7 +81,7 @@ export default function Login() {
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-100 via-zinc-50 to-zinc-100 flex flex-col justify-center items-center p-4 relative">
       {/* Link discreto para o professor abrir a TV */}
       <div className="absolute top-4 right-4">
-        <Link to="/tv" target="_blank" rel="noopener noreferrer">
+        <Link to="/tv-login" target="_blank" rel="noopener noreferrer">
           <Button variant="outline" size="sm" className="bg-white/50 backdrop-blur-sm text-zinc-600 hover:text-zinc-900 gap-2 border-zinc-200 shadow-sm">
             <Tv className="w-4 h-4 text-blue-600" />
             Abrir Painel da TV

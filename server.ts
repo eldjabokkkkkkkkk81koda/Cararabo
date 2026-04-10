@@ -45,6 +45,15 @@ async function startServer() {
     res.json({ success: true, student: newStudent });
   });
 
+  // API Route to clear all records
+  app.delete("/api/clear", (req, res) => {
+    students = [];
+    clients.forEach(client => {
+      client.write(`data: ${JSON.stringify(students)}\n\n`);
+    });
+    res.json({ success: true });
+  });
+
   // API Route for the TV to subscribe to real-time updates (SSE)
   app.get("/api/stream", (req, res) => {
     res.setHeader("Content-Type", "text/event-stream");
