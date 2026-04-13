@@ -24,7 +24,12 @@ async function startServer() {
     const { name, email } = req.body;
     
     if (!name || !email) {
-      return res.status(400).json({ error: "Name and email are required" });
+      return res.status(400).json({ error: "Nome e e-mail são obrigatórios" });
+    }
+
+    // Check for duplicate email
+    if (students.some(s => s.email.toLowerCase() === email.toLowerCase())) {
+      return res.status(400).json({ error: "Este e-mail já está cadastrado no banco de dados." });
     }
 
     const newStudent: Student = {

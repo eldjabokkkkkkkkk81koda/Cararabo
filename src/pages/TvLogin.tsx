@@ -31,7 +31,7 @@ export default function TvLogin() {
           </div>
           <CardTitle className="text-2xl font-bold tracking-tight">Acesso Restrito</CardTitle>
           <CardDescription className="text-zinc-400">
-            Painel exclusivo do professor.
+            Painel exclusivo do grupo.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -62,6 +62,9 @@ export default function TvLogin() {
               Acessar Painel da TV
             </Button>
           </form>
+          <div className="mt-6 text-center">
+            <span className="text-zinc-500 text-xs font-medium italic tracking-wide">By kodax</span>
+          </div>
         </CardContent>
       </Card>
     </div>
