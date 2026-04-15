@@ -6,6 +6,7 @@ interface Student {
   id: string;
   name: string;
   email: string;
+  teacher: string;
   timestamp: string;
 }
 
@@ -21,10 +22,10 @@ async function startServer() {
 
   // API Route to handle new logins
   app.post("/api/login", (req, res) => {
-    const { name, email } = req.body;
+    const { name, email, teacher } = req.body;
     
-    if (!name || !email) {
-      return res.status(400).json({ error: "Nome e e-mail são obrigatórios" });
+    if (!name || !email || !teacher) {
+      return res.status(400).json({ error: "Nome, e-mail e professor são obrigatórios" });
     }
 
     // Check for duplicate email
@@ -36,6 +37,7 @@ async function startServer() {
       id: Math.random().toString(36).substring(2, 9),
       name,
       email,
+      teacher,
       timestamp: new Date().toISOString()
     };
     

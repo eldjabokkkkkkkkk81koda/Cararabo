@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 export default function Login() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [teacher, setTeacher] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -19,14 +20,14 @@ export default function Login() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name && email) {
+    if (name && email && teacher) {
       setIsLoading(true);
       setError("");
       try {
         const response = await fetch('/api/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email })
+          body: JSON.stringify({ name, email, teacher })
         });
         
         const data = await response.json();
@@ -106,6 +107,7 @@ export default function Login() {
                 setSubmitted(false);
                 setName("");
                 setEmail("");
+                setTeacher("");
               }}
               className="w-full h-14 rounded-full bg-[#00AFF0] hover:bg-[#0091C7] text-white font-bold text-sm uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(0,175,240,0.3)] hover:shadow-[0_6px_20px_rgba(0,175,240,0.4)] hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
@@ -163,6 +165,20 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+          </div>
+          <div>
+            <select
+              id="teacher"
+              className="w-full h-12 px-4 rounded-xl bg-zinc-100 border-transparent focus:bg-white focus:border-[#00AFF0] focus:ring-2 focus:ring-[#00AFF0]/20 transition-all outline-none text-zinc-900 invalid:text-zinc-500"
+              value={teacher}
+              onChange={(e) => setTeacher(e.target.value)}
+              required
+            >
+              <option value="" disabled>Professor Favorito</option>
+              <option value="Kadjon">Kadjon</option>
+              <option value="Marvin">Marvin</option>
+              <option value="Michel">Michel</option>
+            </select>
           </div>
           
           {error && (
