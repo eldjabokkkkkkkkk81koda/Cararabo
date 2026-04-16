@@ -156,48 +156,6 @@ export default function TvDashboard() {
             <Trash2 className="w-4 h-4 group-hover:scale-110 transition-transform" />
             <span className="hidden lg:inline">Truncate</span>
           </button>
-
-          {/* Menu Dropdown */}
-          <div className="relative">
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.05] text-zinc-400 hover:text-white transition-all"
-              title="Opções"
-            >
-              <MoreVertical className="w-5 h-5" />
-            </button>
-
-            <AnimatePresence>
-              {isMenuOpen && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-40" 
-                    onClick={() => setIsMenuOpen(false)}
-                  />
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute right-0 top-full mt-2 w-48 bg-[#111] border border-white/[0.08] rounded-xl shadow-2xl overflow-hidden z-50"
-                  >
-                    <div className="p-1">
-                      <a 
-                        href="https://relacionamentos.onrender.com/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between w-full px-3 py-2.5 text-sm text-zinc-300 hover:text-white hover:bg-white/[0.05] rounded-lg transition-colors group"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <span className="font-medium">Relações</span>
-                        <ExternalLink className="w-4 h-4 text-zinc-500 group-hover:text-[#00AFF0] transition-colors" />
-                      </a>
-                    </div>
-                  </motion.div>
-                </>
-              )}
-            </AnimatePresence>
-          </div>
         </div>
       </header>
 
